@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>宸均的緊急聯絡卡</title>
+  <title>宸宸是我 我是宸宸</title>
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -58,7 +58,7 @@
 </head>
 <body>
   <div class="card">
-    <h1>宸均的緊急聯絡卡</h1>
+    <h1>宸宸的聯絡卡</h1>
     <div>⚠️ 點擊下方按鈕以顯示聯絡資訊</div>
     <button class="btn" onclick="revealAndNotify()">✅ 點我顯示聯絡資訊</button>
     <div id="clickCounter" class="counter"></div>
@@ -86,7 +86,6 @@
       let lng = "N/A";
       let ip = "N/A";
 
-      // 取得 IP 位址與地理位置
       try {
         const ipRes = await fetch("https://get.geojs.io/v1/ip/geo.json");
         const ipData = await ipRes.json();
@@ -101,8 +100,8 @@
         lng = geo.coords.longitude;
       } catch (e) {}
 
-      // 寄送通知
-      fetch("https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec", {
+      // ✅ 寄送通知
+      fetch("https://script.google.com/macros/s/AKfycbzOyc1ocezggnURWYjgoKLN5w8gQRnptfmeMZ0HrcKQA31DLG4mU4Cwy_3iDX8rAL5XSQ/exec", {
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
