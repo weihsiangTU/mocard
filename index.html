@@ -91,7 +91,7 @@
         const ipData = await ipRes.json();
         ip = ipData.ip;
       } catch (e) {
-        console.log("無法取得 IP");
+        console.warn("❌ IP 取得失敗", e);
       }
 
       try {
@@ -101,11 +101,11 @@
         lat = geo.coords.latitude;
         lng = geo.coords.longitude;
       } catch (e) {
-        console.log("使用者未允許定位");
+        console.warn("📍 使用者未允許定位", e);
       }
 
-      // ✅ 寄送通知
-      fetch("https://script.google.com/macros/s/AKfycbzOyc1ocezggnURWYjgoKLN5w8gQRnptfmeMZ0HrcKQA31DLG4mU4Cwy_3iDX8rAL5XSQ/exec", {
+      // ✅ 發送至 Apps Script（新版 URL）
+      fetch("https://script.google.com/macros/s/AKfycbxpCRKjylGqLE9lN_SIHJdQL9j1avJ8NqKrwkdO3UWM_f1Gu2n7N9ucJJKujWx5jxqq3g/exec", {
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -117,8 +117,9 @@
           longitude: lng,
           referrer: ref
         })
-      }).then(res => console.log("通知已發送"))
-        .catch(err => console.error("通知發送失敗", err));
+      })
+      .then(res => console.log("✅ 通知已送出"))
+      .catch(err => console.error("❌ 通知發送失敗", err));
     }
   </script>
 </body>
