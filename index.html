@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>宸均的緊急聯絡卡</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #fffef8;
+      text-align: center;
+      padding: 20px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      max-width: 360px;
+      margin: auto;
+    }
+    .btn {
+      margin-top: 20px;
+      display: inline-block;
+      padding: 10px 20px;
+      background: #90caf9;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    #contactImage {
+      display: none;
+      margin-top: 20px;
+      width: 100%;
+    }
+    .watermark {
+      position: absolute;
+      opacity: 0.2;
+      font-size: 50px;
+      transform: rotate(-30deg);
+      top: 40%;
+      left: 20%;
+      pointer-events: none;
+    }
+  </style>
+  <script>
+    function revealAndNotify() {
+      document.getElementById("contactImage").style.display = "block";
+
+      // 寄出通知（結合 Google Apps Script）
+      fetch("https://script.google.com/macros/s/AKfycbwemiVfakCdI5sqoOxHs1nUp8uzrzav2TzFoIyOqEFcpQy3ErajwWv0owSwv_4X1DSI/exec")
+        .then(response => console.log("已通知"))
+        .catch(error => console.error("通知失敗", error));
+    }
+  </script>
+</head>
+<body>
+  <div class="card">
+    <h1>宸均的緊急聯絡卡</h1>
+    <div>⚠️ 點擊下方按鈕以顯示聯絡資訊</div>
+    <button class="btn" onclick="revealAndNotify()">✅ 點我顯示聯絡資訊並通知家長</button>
+    <img id="contactImage" src="contact_info.png" alt="聯絡資訊圖檔" />
+    <div class="watermark">私密資訊</div>
+  </div>
+</body>
+</html>
