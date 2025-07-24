@@ -49,16 +49,25 @@
       margin-top: 10px;
       font-size: 18px;
     }
+    .notice {
+      margin-top: 40px;
+      font-size: 12px;
+      color: gray;
+    }
   </style>
 </head>
 <body>
   <div class="card">
-    <h1>宸宸的聯絡卡</h1>
+    <h1>宸均的緊急聯絡卡</h1>
     <div>⚠️ 點擊下方按鈕以顯示聯絡資訊</div>
-    <button class="btn" onclick="revealAndNotify()">✅ 點我顯示聯絡資訊</button>
+    <button class="btn" onclick="revealAndNotify()">✅ 點我顯示聯絡資訊並通知家長</button>
     <div id="clickCounter" class="counter"></div>
-    <img id="contactImage" src="contact_image_protected.png" alt="聯絡資訊圖檔" />
+    <img id="contactImage" src="emergency_card_watermarked_clear.png" alt="聯絡資訊圖檔" />
     <div class="watermark">私密資訊</div>
+  </div>
+
+  <div class="notice">
+    📌 小提醒：這裡會記錄基本資訊，單純用來通知家長，不會留下個人資料唷。
   </div>
 
   <script>
