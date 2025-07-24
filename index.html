@@ -90,7 +90,9 @@
         const ipRes = await fetch("https://get.geojs.io/v1/ip/geo.json");
         const ipData = await ipRes.json();
         ip = ipData.ip;
-      } catch (e) {}
+      } catch (e) {
+        console.log("無法取得 IP");
+      }
 
       try {
         const geo = await new Promise((resolve, reject) => {
@@ -98,7 +100,9 @@
         });
         lat = geo.coords.latitude;
         lng = geo.coords.longitude;
-      } catch (e) {}
+      } catch (e) {
+        console.log("使用者未允許定位");
+      }
 
       // ✅ 寄送通知
       fetch("https://script.google.com/macros/s/AKfycbzOyc1ocezggnURWYjgoKLN5w8gQRnptfmeMZ0HrcKQA31DLG4mU4Cwy_3iDX8rAL5XSQ/exec", {
@@ -113,7 +117,8 @@
           longitude: lng,
           referrer: ref
         })
-      });
+      }).then(res => console.log("通知已發送"))
+        .catch(err => console.error("通知發送失敗", err));
     }
   </script>
 </body>
